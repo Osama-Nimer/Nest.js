@@ -18,10 +18,8 @@ COPY package*.json ./
 RUN npm install --only=production
 
 COPY --from=builder /app/dist ./dist
-
-
-COPY --from=builder /app/drizzle.config.js ./ 
-COPY --from=builder /app/src/db ./src/db
+COPY --from=builder /app/dist/src/db ./src/db  
+COPY --from=builder /app/dist/drizzle.config.js ./
 
 EXPOSE 3000
 
