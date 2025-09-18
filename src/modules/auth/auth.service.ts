@@ -1,4 +1,4 @@
-import { Injectable, Post, UnauthorizedException } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
 import { users } from '../../db/schema';
