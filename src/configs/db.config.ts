@@ -9,4 +9,8 @@ const pool = new Pool({
   keepAlive: true, 
 });
 
+pool.connect()
+  .then(() => console.log("✅ DB Connected successfully"))
+  .catch((err) => console.error("❌ DB Connection error:", err));
+
 export const db = drizzle(pool);

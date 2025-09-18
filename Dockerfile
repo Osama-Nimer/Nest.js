@@ -19,6 +19,10 @@ RUN npm install --only=production
 
 COPY --from=builder /app/dist ./dist
 
+
+COPY --from=builder /app/drizzle.config.js ./ 
+COPY --from=builder /app/src/db ./src/db
+
 EXPOSE 3000
 
-CMD ["sh", "-c", "npx drizzle-kit generate && npx drizzle-kit push && node dist/src/main.js"]
+CMD ["node", "dist/src/main.js"]
