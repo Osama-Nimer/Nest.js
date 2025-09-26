@@ -15,12 +15,12 @@ export const verifyToken = async (token: string) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET!) as unknown;
     
     if (typeof decoded === 'object' && decoded !== null && 'userId' in decoded && 'username' in decoded) {
-      const { sub, username } = decoded as { sub: number; username: string };
+      const { userId, username } = decoded as { userId: number; username: string };
     } else {
       throw new Error("Invalid token structure");
     }
 
-    const userId = decoded.sub as number;
+    const userId = decoded.userId as number;
 
     const usersList = await db
       .select()
