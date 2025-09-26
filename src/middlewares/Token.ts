@@ -14,7 +14,7 @@ export const verifyToken = async (token: string) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET!) as unknown;
     
-    if (typeof decoded === 'object' && decoded !== null && 'sub' in decoded && 'username' in decoded) {
+    if (typeof decoded === 'object' && decoded !== null && 'userId' in decoded && 'username' in decoded) {
       const { sub, username } = decoded as { sub: number; username: string };
     } else {
       throw new Error("Invalid token structure");
